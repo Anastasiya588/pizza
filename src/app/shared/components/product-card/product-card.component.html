@@ -1,0 +1,53 @@
+<div class="product">
+  <!--<div class="product" *isChicken="product.description">-->
+  <!--  <div class="product-image" *ngIf="product.image>-->
+  <!--  <div class="product-image" *ngIf="product.image; else defaultImageBlock">-->
+  <!--    <img src="assets/images/{{product.image}}">-->
+  <!--  </div>-->
+  <!--  <ng-template #defaultImageBlock>-->
+  <!--    <div class="product-image">-->
+  <!--      <img src="assets/images/pizzzzza.png">-->
+  <!--    </div>-->
+  <!--  </ng-template>-->
+  <!--  Или-->
+  <div *ngIf="product.image; then productImageBlock else defaultImageBlock"></div>
+  <ng-template #productImageBlock>
+    <div class="product-image">
+      <img src="{{product.image}}">
+    </div>
+  </ng-template>
+
+  <ng-template #defaultImageBlock>
+    <div class="product-image">
+      <img src="assets/images/pizzzzza.png">
+    </div>
+  </ng-template>
+  <!--  -->
+
+
+  <!--  <div class="product-image" *ngIf="!product.image">-->
+  <!--    <img src="assets/images/pizzzzza.png">-->
+  <!--  </div>-->
+  <custom-title [title]="product.title">
+    <!--  <custom-title [title]="product.title" #customTitle>-->
+    <!--    <p first>Test message</p>-->
+    <!--    <p second #second>wow</p>-->
+  </custom-title>
+  <!--  <div class="product-text">{{ product.description | uppercase }}</div>-->
+  <div class="product-text">{{ product.description | wordUpper:['томат', 'сыр', 'сос'] }}</div>
+  <!--  <div class="product-text">{{ product.description | wordUpper:'томат': 'сыр' }}</div>-->
+  <!--  <div class="product-text">{{ product.description | chickenDescription }}</div>-->
+  <div class="product-action" #elem>
+    <!--    <button class="btn btn-add-to-cart product-button" id="no-touch" (click)="addProductToCart(customTitle.toUpper())">В-->
+    <button class="btn btn-add-to-cart product-button" id="no-touch" (click)="addProductToCart()">В
+      корзину
+    </button>
+    <button class="btn btn-white" [routerLink]="['/products', product.id]">Подробнее
+    </button>
+  </div>
+  <!--  <div>{{product.datetime| date:'dd.MM.yyyy HH:mm'}}</div>-->
+  <!--  <div>{{product.datetime| date:'full'|uppercase}}</div>-->
+
+  <!--  <div>{{cartProductService.getCommonCount()}}</div>-->
+</div>
+<!--(click)="addToCart(product, orderElement)"-->
