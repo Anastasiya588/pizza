@@ -99,7 +99,7 @@ console.log(environment.production);
   private popupComponent!:PopupComponent;
   ngAfterViewInit(): void {
     // this.modalService.open(this.popup,{});
-    this.popupComponent.open()
+    // this.popupComponent.open()
   }
 
   ngOnDestroy() {
